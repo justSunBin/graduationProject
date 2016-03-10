@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="userBase">
+
+       <select id="getByUn" parameterClass="String" resultClass="com.renrun.wache.bean.user.UserBase">
+              select * from user_base where un=#un# limit 1
+       </select>
+
+       <select id="getByMobile" parameterClass="String" resultClass="com.renrun.wache.bean.user.UserBase">
+              select * from user_base where mobile=#mobile#  limit 1
+       </select>
+
+       <select id="getByEmail" parameterClass="String" resultClass="com.renrun.wache.bean.user.UserBase">
+              select * from user_base where email=#email#  limit 1
+       </select>
+
+       <select id="getByUid" parameterClass="long" resultClass="com.renrun.wache.bean.user.UserBase">
+              select * from user_base where uid=#uid#
+       </select>
+
+       <insert id="insert" parameterClass="com.renrun.wache.bean.user.UserBase">
+              INSERT INTO `wache`.`user_base` ( `un`, `uname`, `bindname`, `email`, `mobile`, `pass`, `salt`, `paypass`, `created_at`)
+              VALUES (#un#, #uname#, #bindname#, #email#, #mobile#, #pass#, #salt#, #paypass#, NOW());
+       </insert>
+
+       <select id="getPaypass" parameterClass="long" resultClass="String">
+              select paypass from user_base where uid=#uid#
+       </select>
+
+       <update id="updatePaypass" parameterClass="java.util.Map">
+              UPDATE user_base SET paypass=#paypass# WHERE uid=#uid#
+       </update>
+
+       <select id="getPass" parameterClass="long" resultClass="String">
+              select pass from user_base where uid=#uid#
+       </select>
+
+       <update id="updatePass" parameterClass="java.util.Map">
+              UPDATE user_base SET pass=#pass# WHERE uid=#uid#
+       </update>
+
+       <update id="setCid" parameterClass="com.renrun.wache.bean.user.UserBase">
+              UPDATE user_base SET cid=#cid# WHERE uid=#uid#
+       </update>
+
+</sqlMap>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="carPhoto">
+
+    <!--只返回基本的信息-->
+    <select id="getByCarId" parameterClass="long" resultClass="com.renrun.wache.bean.car.CarPhoto">
+        SELECT * FROM car_photo
+        WHERE car_photo.car_id=#car_id# ORDER BY car_photo.id
+    </select>
+
+
+    <insert id="insert" parameterClass="com.renrun.wache.bean.car.CarPhoto">
+        INSERT INTO `wache`.`car_photo` ( `id`, `car_id`, `pt`)
+        VALUES (#id#, 0, #pt#);
+    </insert>
+
+    <update id="updateCid" parameterClass="java.util.Map">
+        UPDATE car_photo SET car_id=#car_id# WHERE id=#id#
+    </update>
+
+    <update id="setDefault" parameterClass="long">
+        UPDATE car_photo SET id_default=1 WHERE id=#photo_id#
+    </update>
+</sqlMap>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="paymentNotify">
+
+       <!--只返回基本的信息-->
+       <select id="getByCode" parameterClass="String" resultClass="com.renrun.wache.bean.payment.PaymentNotify">
+              select * from payment_notify where code=#code#
+       </select>
+
+
+       <!--插入-->
+       <insert id="insert" parameterClass="com.renrun.wache.bean.payment.PaymentNotify">
+              INSERT INTO payment_notify (payment,code,json,created_at) VALUES(#payment#,#code#,#json#,NOW())
+       </insert>
+
+       <!--更新-->
+       <update id="update" parameterClass="com.renrun.wache.bean.payment.PaymentNotify">
+              UPDATE payment_notify SET json=#json# WHERE payment=#payment# and code=#code#
+       </update>
+
+
+
+</sqlMap>

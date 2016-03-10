@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="appSession">
+
+    <select id="getByUidWithSid" parameterClass="com.renrun.wache.bean.mob.AppSession" resultClass="com.renrun.wache.bean.mob.AppSession">
+        select * from mob_app_session where uid=#uid# and sid=#sid#
+    </select>
+
+
+    <insert id="insert" parameterClass="com.renrun.wache.bean.mob.AppSession">
+        INSERT INTO mob_app_session(uid,sid,expires_in)
+        VALUES(#uid#,#sid#,#expires_in#)
+    </insert>
+</sqlMap>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="rizu:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="rizu_run.war">
+      <element id="artifact" artifact-name="rizu:war exploded" />
+    </root>
+  </artifact>
+</component>

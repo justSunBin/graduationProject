@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="mobApps">
+
+    <select id="getByAppId" parameterClass="int" resultClass="com.renrun.wache.bean.mob.MobApps">
+        select * from mob_apps where app_id=#app_id#
+    </select>
+
+</sqlMap>

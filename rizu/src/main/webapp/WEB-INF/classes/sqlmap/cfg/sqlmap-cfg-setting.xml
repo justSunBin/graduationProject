@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="cfgSetting">
+       <select id="allList"  resultClass="com.renrun.wache.bean.cfg.CfgSetting">
+               SELECT * FROM cfg_setting
+       </select>
+
+
+       <select id="getByCfgKey" parameterClass="String"  resultClass="com.renrun.wache.bean.cfg.CfgSetting">
+                SELECT * FROM cfg_setting WHERE cfg_key=#cfg_key# limit 1
+       </select>
+
+        <update id="updateCfg" parameterClass="com.renrun.wache.bean.cfg.CfgSetting">
+            UPDATE cfg_setting SET val=#val# where cfg_key=#cfg_key#
+        </update>
+
+       <select id="modelById"   parameterClass="long" resultClass="com.renrun.wache.bean.car.CarModel">
+             SELECT id,brand_id,brand_name,brand_first_letter,brand_slug,model_id,model_name,model_attribute,model_classified,model_mum,model_slug,model_hot FROM car_model WHERE model_id=#model_id#  group by model_id limit 1
+       </select>
+</sqlMap>

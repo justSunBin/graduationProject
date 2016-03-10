@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="bankcard">
+
+       <select id="getById" parameterClass="long" resultClass="com.renrun.wache.bean.user.Bankcard">
+              select * from user_bankcard where id=#id# limit 1
+       </select>
+
+       <select id="getByBankcardNo" parameterClass="string" resultClass="com.renrun.wache.bean.user.Bankcard">
+              select * from user_bankcard where bankcard_no=#bankcard_no# limit 1
+       </select>
+
+       <select id="getByUid" parameterClass="long" resultClass="com.renrun.wache.bean.user.Bankcard">
+              select * from user_bankcard where uid=#uid# and is_default=1
+       </select>
+
+       <insert id="insert" parameterClass="com.renrun.wache.bean.user.Bankcard">
+              INSERT INTO `wache`.`user_bankcard` (`uid`, `bank_id`, `bank_code`, `province_id`, `city_id`, `branch`, `bankcard_no`, `uname`, `personid`, `mobile`, `is_default`, `status`, `created_at`, `updated_at`)
+              VALUES (#uid#, #bank_id#, #bank_code#, #province_id#, #city_id#, #branch#, #bankcard_no#, #uname#, #personid#, #mobile#, #is_default#, #status#, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+       </insert>
+
+       <insert id="update" parameterClass="com.renrun.wache.bean.user.Bankcard">
+              UPDATE `wache`.`user_bankcard` SET uid=#uid#, `bank_id`=#bank_id#, `bank_code`=#bank_code#, `province_id`=#province_id#, `city_id`=#city_id#, `branch`=#branch#, `bankcard_no`=#bankcard_no#, `uname`=#uname#, `personid`=#personid#, `mobile`=#mobile#, `is_default`=#is_default#, `status`=#status#
+              WHERE id=#id#
+       </insert>
+       <select id="getByUidStatus" parameterClass="long" resultClass="com.renrun.wache.bean.user.Bankcard">
+              select * from user_bankcard where uid=#uid# and status=1
+       </select>
+       <select id="getListByUid" parameterClass="long" resultClass="com.renrun.wache.bean.user.Bankcard">
+              select * from user_bankcard where uid=#uid# 
+       </select>
+       <select id="getDefaultByUid" parameterClass="long" resultClass="com.renrun.wache.bean.user.Bankcard">
+              select * from user_bankcard where uid=#uid# and is_default=1 limit 1
+       </select>
+
+
+       <select id="findList" parameterClass="java.util.Map" resultClass="com.renrun.wache.bean.user.Bankcard">
+              SELECT * FROM user_bankcard WHERE 1
+
+              <isNotNull prepend=" AND " property="uid">
+                     uid=#uid#
+              </isNotNull>
+              <isNotNull prepend=" AND " property="uids">
+                     uid in (#uids#)
+              </isNotNull>
+              <isNotNull prepend=" AND " property="bt">
+                     <![CDATA[
+                created_at>=#bt#
+                 ]]>
+              </isNotNull>
+              <isNotNull prepend=" AND " property="et">
+                     <![CDATA[
+                created_at<=#et#
+                 ]]>
+              </isNotNull>
+              <isNotNull prepend=" AND " property="status">
+                     status=#status#
+              </isNotNull>
+              <isNotNull prepend=" AND " property="uname">
+                  uname like #uname#
+              </isNotNull>
+              <isNotNull prepend=" AND " property="bank_id">
+                     bank_id=#bank_id#
+              </isNotNull>
+
+               <isNotNull prepend=" AND " property="keyword">
+                   (uname like '%$keyword$%' or personid like '%$keyword$%' or bankcard_no like '%$keyword$%' or uid='$keyword$' or id='$keyword$')
+               </isNotNull>
+              order by updated_at desc
+
+              <isNotNull prepend=" LIMIT " property="perpage">
+                     <isNotNull open=" " property="start" close=",">
+                            #start#
+                     </isNotNull>
+                     #perpage#
+              </isNotNull>
+
+       </select>
+
+       <select id="findTotal" parameterClass="java.util.Map" resultClass="long">
+              select count(*) as nums from user_bankcard  WHERE 1
+
+               <isNotNull prepend=" AND " property="uid">
+                   uid=#uid#
+               </isNotNull>
+               <isNotNull prepend=" AND " property="uids">
+                   uid in (#uids#)
+               </isNotNull>
+               <isNotNull prepend=" AND " property="bt">
+                   <![CDATA[
+                    updated_at>=#bt#
+                     ]]>
+               </isNotNull>
+               <isNotNull prepend=" AND " property="et">
+                   <![CDATA[
+                    updated_at<=#et#
+                     ]]>
+               </isNotNull>
+               <isNotNull prepend=" AND " property="status">
+                   status=#status#
+               </isNotNull>
+               <isNotNull prepend=" AND " property="uname">
+                   uname like #uname#
+               </isNotNull>
+               <isNotNull prepend=" AND " property="bank_id">
+                   bank_id=#bank_id#
+               </isNotNull>
+               <isNotNull prepend=" AND " property="keyword">
+                   (uname like '%$keyword$%' or personid like '%$keyword$%' or bankcard_no like '%$keyword$%' or uid='$keyword$' or id='$keyword$')
+               </isNotNull>
+
+       </select>
+
+        <update id="updateStatus" parameterClass="Map">
+            UPDATE user_bankcard SET status=#status# WHERE id=#id#
+        </update>
+</sqlMap>

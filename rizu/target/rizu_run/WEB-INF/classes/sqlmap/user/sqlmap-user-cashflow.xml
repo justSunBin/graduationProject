@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="userCashFlow">
+
+       <insert id="insert" parameterClass="com.renrun.wache.bean.user.UserCashFlow">
+           INSERT INTO user_cash_flow(uid,ft,bus_id,money,prev_money,acc_money,from_aid,to_aid,created_at)
+           VALUES(#uid#,#ft#,#bus_id#,#money#,#prev_money#,#acc_money#,#from_aid#,#to_aid#,NOW())
+       </insert>
+       <select id="findAll" resultClass="com.renrun.wache.bean.user.UserCashFlow">
+           select * from user_cash_flow
+       </select>
+
+    <select id="findList" parameterClass="java.util.Map" resultClass="com.renrun.wache.bean.user.UserCashFlow">
+        SELECT *
+        FROM user_cash_flow
+            <!--<isNotNull prepend=" WHERE " property="keyword">
+                &lt;!&ndash;(uid = '%$keyword$%' or ft = '%$keyword$%' or bus_id = '%$keyword$%' or money='$keyword$' or id='$keyword$' or prev_money='$keyword$' or acc_money='$keyword$' or from_aid='$keyword$' or to_aid='$keyword$')&ndash;&gt;
+                ft = '%$keyword$%'
+            </isNotNull>-->
+            <isNotNull prepend=" where " property="ft">
+                ft = #ft#
+            </isNotNull>
+            <isNotNull prepend=" where " property="uid">
+                uid = #uid#
+            </isNotNull>
+            <isNotNull prepend=" LIMIT " property="perpage">
+                <isNotNull open=" " property="start" close=",">
+                    #start#
+                </isNotNull>
+                #perpage#
+            </isNotNull>
+    </select>
+
+    <select id="findTotal" parameterClass="java.util.Map" resultClass="long">
+        select count(*) as nums from user_cash_flow
+        <isNotNull prepend=" where " property="ft">
+            ft = #ft#
+        </isNotNull>
+        <isNotNull prepend=" where " property="uid">
+            uid = #uid#
+        </isNotNull>
+       <!-- <dynamic prepend=" WHERE ">
+           &lt;!&ndash; <isNotNull prepend=" WHERE " property="keyword">
+               &lt;!&ndash; (uid = '%$keyword$%' or ft = '%$keyword$%' or bus_id = '%$keyword$%' or money='$keyword$' or id='$keyword$' or prev_money='$keyword$' or acc_money='$keyword$' or from_aid='$keyword$' or to_aid='$keyword$')&ndash;&gt;
+                ft = '%$keyword$%'
+            </isNotNull>&ndash;&gt;
+        </dynamic>-->
+    </select>
+</sqlMap>

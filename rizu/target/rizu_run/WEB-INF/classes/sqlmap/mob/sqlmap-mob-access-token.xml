@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="accessToken">
+
+    <select id="getLastByAppId" parameterClass="int" resultClass="com.renrun.wache.bean.mob.AccessToken">
+        SELECT * FROM mob_access_token WHERE app_id=#app_id# ORDER BY id desc LIMIT 1
+    </select>
+
+    <select id="getByAccessToken" parameterClass="String" resultClass="com.renrun.wache.bean.mob.AccessToken">
+        SELECT * FROM mob_access_token WHERE access_token=#access_token# ORDER BY id desc LIMIT 1
+    </select>
+
+    <insert id="insert" parameterClass="com.renrun.wache.bean.mob.AccessToken">
+        INSERT INTO mob_access_token(app_id,access_token,seed,expires_in,ip,created_at)
+        VALUES(#app_id#,#access_token#,#seed#,#expires_in#,#ip#,NOW())
+    </insert>
+</sqlMap>

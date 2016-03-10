@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="carModel">
+       <select id="allList" parameterClass="com.renrun.comm.base.Page" resultClass="com.renrun.wache.bean.car.CarModel">
+              <![CDATA[
+              SELECT * FROM car_base ORDER BY id  limit #start#,#perpage#
+              ]]>
+       </select>
+
+       <select id="findBand_list" resultClass="com.renrun.wache.bean.car.CarConfigBrand">
+              SELECT DISTINCT brand_id,brand_name FROM carmodel_base
+       </select>
+
+       <select id="findManufactor_list" resultClass="com.renrun.wache.bean.car.CarConfigManufactor">
+              SELECT DISTINCT manufactor_id,manufactor FROM carmodel_base WHERE brand_id=#brand_id#
+       </select>
+
+       <select id="findModel_list" parameterClass="java.util.Map" resultClass="com.renrun.wache.bean.car.CarConfigModel">
+              SELECT DISTINCT model_id,model_name FROM carmodel_base WHERE brand_id=#brand_id# AND manufactor_id=#manufactor_id#
+       </select>
+
+       <select id="findModel_d_list" parameterClass="java.util.Map" resultClass="com.renrun.wache.bean.car.CarConfigModel_d">
+              SELECT DISTINCT model_d_id,model_d_detail_model FROM carmodel_base WHERE brand_id=#brand_id# AND model_id=#model_id#
+       </select>
+
+       <select id="getBrand_name" parameterClass="int" resultClass="String">
+              <![CDATA[
+              SELECT DISTINCT brand_name FROM carmodel_base WHERE brand_id=#brand_id# limit 1
+              ]]>
+       </select>
+
+       <select id="getManufactor" parameterClass="int" resultClass="String">
+              <![CDATA[
+              SELECT DISTINCT manufactor FROM carmodel_base WHERE manufactor_id=#manufactor_id# limit 1
+              ]]>
+       </select>
+
+       <select id="getModel_name" parameterClass="int" resultClass="String">
+              <![CDATA[
+              SELECT DISTINCT model_name FROM carmodel_base WHERE model_id=#model_id# limit 1
+              ]]>
+       </select>
+
+       <select id="getModel_d_detail_model" parameterClass="int" resultClass="String">
+              <![CDATA[
+              SELECT DISTINCT model_d_detail_model FROM carmodel_base WHERE model_d_id=#model_d_id# limit 1
+              ]]>
+       </select>
+
+       <select id="brandById" resultClass="com.renrun.wache.bean.car.CarConfigBrand">
+              SELECT DISTINCT brand_id,brand_name FROM carmodel_base WHERE brand_id=#brand_id# limit 1
+       </select>
+       <select id="modelById" parameterClass="long" resultClass="com.renrun.wache.bean.car.CarConfigModel">
+              SELECT DISTINCT model_id,model_name FROM carmodel_base WHERE model_id=#model_id# limit 1
+       </select>
+
+
+</sqlMap>

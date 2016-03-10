@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="carEvaluate">
+
+    <!--只返回基本的信息-->
+
+    <insert id="insert" parameterClass="com.renrun.wache.bean.car.CarEvaluate">
+        insert into car_evaluate (uid,car_id,evaluate,created_at) values(#uid#,#car_id#,#evaluate#,now())
+    </insert>
+
+</sqlMap>

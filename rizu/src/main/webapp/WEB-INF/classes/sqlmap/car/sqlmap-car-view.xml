@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="carView">
+
+    <!--只返回基本的信息-->
+    <select id="getCarView"  resultClass="com.renrun.wache.bean.car.CarView">
+        select * from car_views order by updated_at DESC
+    </select>
+    <select id="getCarViewByUid" parameterClass="Map" resultClass="com.renrun.wache.bean.car.CarView">
+        select * from car_views where uid=#uid#  order by updated_at DESC
+        <isNotNull prepend=" LIMIT " property="perpage">
+            <isNotNull prepend=" " property="pos">
+                #pos#,
+            </isNotNull>
+            #perpage#
+        </isNotNull>
+    </select>
+
+    <select id="getCarViewByCarId" parameterClass="java.util.Map" resultClass="com.renrun.wache.bean.car.CarView">
+        select * from car_views where car_id=#car_id# order by updated_at DESC
+        <isNotNull prepend=" LIMIT " property="perpage">
+            <isNotNull prepend=" " property="pos">
+                #pos#,
+            </isNotNull>
+            #perpage#
+        </isNotNull>
+    </select>
+
+    <select id="getCarViewByUidAndCarId" parameterClass="java.util.Map" resultClass="com.renrun.wache.bean.car.CarView">
+        select * from car_views where uid=#uid# and car_id=#id# order by updated_at DESC
+    </select>
+    <insert id="insertCarView" parameterClass="com.renrun.wache.bean.car.CarView">
+        insert into car_views (uid,car_id,nums) values(#uid#,#car_id#,#nums#)
+    </insert>
+    <update id="updateCarView" parameterClass="com.renrun.wache.bean.car.CarView">
+        update car_views set nums=#nums# where uid=#uid# and car_id=#car_id#
+    </update>
+</sqlMap>

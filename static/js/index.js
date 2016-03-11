@@ -59,34 +59,6 @@ $(function () {
 		} 
 	});
 	//首行下拉
-	$('#register').click(function(){
-		$('#register-divsion').notifyModal({
-		  duration : -1,
-		  placement : 'centerTopSlide',
-		  type : 'dark',
-		  overlay : true
-		});
-		//绑定input特效
-		$(".label_better").label_better({
-			position: "right",
-	     	easing: "ease-in-out",
-	     	offset: -10
-		});
-	});
-	$('#login').click(function(){
-		$('#login-divsion').notifyModal({
-		  duration : -1,
-		  placement : 'center',
-		  type : 'dark',
-		  overlay : true
-		});
-		//绑定input特效
-		$(".label_better").label_better({
-			position: "right",
-	     	easing: "ease-in-out",
-	     	offset: -10
-		});
-	});
 	$('#user').click(function(){
 		$('#user').popModal({
 			html : function(callback) {
@@ -111,6 +83,12 @@ $(function () {
 			beforeLoadingContent : 'Please, waiting...'
 		});
 	});
+	//弹出框
+	$(".label_better").label_better({
+			position: "top",
+	     	easing: "ease-in-out",
+	     	offset: 0
+		});
 })
 	var address=new Array(3);
 	function showImg()
@@ -218,4 +196,24 @@ $(function () {
 		$("#location").val(item);
 		$("#location-id").val(id);
 
+	}
+
+	// 注册验证码js
+	function confirmMobile(){
+			if ($("#mobile-input").val().length===0) {
+				 alert('请输入手机号码！'+$("#mobile-input").val());
+				 return false;
+			};
+			if($("#mobile-input").val().length!=11) 
+	        { 
+	           alert('请输入有效的手机号码！'); 
+	           document.form1.mobile.focus(); 
+	           return false; 
+	        } 
+			var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
+			if(!myreg.test($("#mobile-input").val())) 
+			{ 
+			    alert('请输入有效的手机号码！'); 
+			    return false;
+			}
 	}

@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" href="css/pickmeup.css" type="text/css" />
 <link type="text/css" rel="stylesheet" href="css/popModal.css">
+<link type="text/css" rel="stylesheet" href="css/reveal.css">
 
 </head>
 <body>
@@ -25,8 +26,8 @@
 		<nav id="nav">
 			<div class="logo">logo</div>
 			<ul>
-				<li><a href="javascript:void(0)" id="login">登陆</a></li>
-				<li><a href="javascript:void(0)" id="register">注册</a></li>
+				<li><a href="javascript:void(0)" id="login" data-reveal-id="login-divsion">登陆</a></li>
+				<li><a href="javascript:void(0)" id="register" data-reveal-id="register-divsion">注册</a></li>
 			</ul>
 			<ul id="user">
 				<li><a href="javascript:void(0)">孙斌</a></li>
@@ -107,33 +108,36 @@
 		<section class="purple-section"></section>
 	</div>
 	<footer id="footer"></footer>
-	<div style="display:none">
-		<!-- 注册 -->
-		<div id="register-divsion">
+		<div id="register-divsion"  class="reveal-modal">
+			<div class="register-titlt">通过手机注册</div>
 			<form id="register-content">
+			<div class="hr"></div>
 			<input type="text" class="label_better"  placeholder="Username">
 			<input type="password" class="label_better" placeholder="Password">
-			<input type="text" class="label_better" placeholder="Mobile">
+			<input type="text" class="label_better" id="mobile-input" placeholder="Mobile"  onblur="confirmMobile();">
 			<div id="register-sendcode" class="button-block"><a href="#">send</a></div>
 			<input type="text" class="label_better" placeholder="Verifycode">
 			<div id="register-submit" class="button-block"><a href="#">submit</a></div>
 			<div id="register-cancel" class="button-block"><a href="#">cancel</a></div>
+			<div class="close" style="display:none"></div>
 			</form>
 		</div>
 		<!-- 登陆 -->
-		<div id="login-divsion">
+		<div id="login-divsion" class="reveal-modal">
+			<div class="login-titlt">账号登陆</div>
 			<form id="login-content">
+				<div class="hr"></div>
 				<input type="text" class="label_better"  placeholder="Username">
 				<input type="password" class="label_better" placeholder="Password">
-				<div id="register-submit" class="button-block"><a href="#">submit</a></div>
-				<div id="register-cancel" class="button-block"><a href="#">cancel</a></div>
+				<div id="login-submit" class="button-block"><a href="#">submit</a></div>
+				<div id="login-cancel" class="button-block"><a href="#">cancel</a></div>
 			</form>
 		</div>
-	</div>
 </body>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.pickmeup.min.js"></script>
 <script type="text/javascript" src="js/jquery.label_better.js"></script>
 <script type="text/javascript" src="js/popModal.js"></script>
+<script type="text/javascript" src="js/jquery.reveal.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 </html>

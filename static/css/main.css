@@ -294,35 +294,51 @@ body,div,h1,h2,ul,li,a,p,input{
 	background: rgba(255, 255, 255, 0.10);
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 	border: none;
-	color: white;
+	/*color: white;*/
 	padding: 10px 15px;
 	border-radius: 25px;
 	font-size: 16px;
-	outline: none;
-	display: inline;
+	/*outline: none;*/
+	display: block;
 	margin: 15px;
 }
-
+#register-divsion,#login-divsion{
+	background: #eee;
+	/*display: none;*/
+	/*width: 100%;*/
+}
 #register-sendcode{
 	background: rgb(90, 124, 255);
 	padding: 10px 5px;
 	font-size: 16px;
+	border-radius: 18px;
 }
 #register-sendcode:hover{
 	background: rgb(142, 166, 212);
 }
-#register-submit{
+#register-submit,#login-submit{
 	border-radius: 25px;
 	padding: 10px 15px;
 	font-size: 16px;
 	margin-left: 16px;
 	margin-top: 10px; 
 }
-#register-cancel{
+#register-cancel,#login-cancel{
 	border-radius: 25px;
 	padding: 10px 15px;
 	display: inline-block;
 	font-size: 16px;
 	margin-left: 38px;
 	margin-top: 10px; 
+}
+/*titlt*/
+.register-titlt,.login-titlt{
+	margin: 0,auto;
+	margin-bottom: 10px;
+	text-align: center;
+	color: #EEE;
+	font-size: 20px;
+}
+#register-content .hr,#login-content .hr{
+	background: #4A4A4A;
 }

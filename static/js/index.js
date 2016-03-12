@@ -85,9 +85,9 @@ $(function () {
 	});
 	//弹出框
 	$(".label_better").label_better({
-			position: "top",
+			position: "right",
 	     	easing: "ease-in-out",
-	     	offset: 0
+	     	offset: -30
 		});
 })
 	var address=new Array(3);
@@ -201,19 +201,41 @@ $(function () {
 	// 注册验证码js
 	function confirmMobile(){
 			if ($("#mobile-input").val().length===0) {
-				 alert('请输入手机号码！'+$("#mobile-input").val());
+				 // alert('请输入手机号码！'+$("#mobile-input").val());
+				 $("#mobile-input").css({
+				 	"border":"1px solid red",
+				 	"padding":"9px 14px"
+				 });
+				 $('#register-sendcode').css("background","rgb(142, 166, 212)");
+				 $('#register-sendcode').unbind("click");
 				 return false;
 			};
-			if($("#mobile-input").val().length!=11) 
-	        { 
-	           alert('请输入有效的手机号码！'); 
-	           document.form1.mobile.focus(); 
-	           return false; 
-	        } 
 			var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
 			if(!myreg.test($("#mobile-input").val())) 
 			{ 
-			    alert('请输入有效的手机号码！'); 
+			    // alert('请输入有效的手机号码！'); 
+			    $("#mobile-input").css({
+				 	"border":"1px solid red",
+				 	"padding":"9px 14px"
+				 });
+			    $('#register-sendcode').css("background","rgb(142, 166, 212)");
+			    $('#register-sendcode').unbind("click");
 			    return false;
+			}else{
+				$("#mobile-input").css({
+				 	"border":"none",
+				 	"padding":"10px 15px"
+				 });
+				$('#register-sendcode').css("background","rgb(90, 124, 255)");
+				$('#register-sendcode').click(sendCode);
 			}
+	}
+	//发送验证码
+	function sendCode(){
+		$("#sms_mobile_repeat").notifyModal({
+			duration : 2500,
+			placement : 'center',
+			type : 'dark',
+			overlay : true
+		})
 	}

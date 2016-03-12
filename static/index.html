@@ -118,7 +118,7 @@
 			<div id="register-sendcode" class="button-block"><a href="#">send</a></div>
 			<input type="text" class="label_better" placeholder="Verifycode">
 			<div id="register-submit" class="button-block"><a href="#">submit</a></div>
-			<div id="register-cancel" class="button-block"><a href="#">cancel</a></div>
+			<div id="register-cancel" class="button-block close-reveal-modal"><a href="#">cancel</a></div>
 			<div class="close" style="display:none"></div>
 			</form>
 		</div>
@@ -130,8 +130,19 @@
 				<input type="text" class="label_better"  placeholder="Username">
 				<input type="password" class="label_better" placeholder="Password">
 				<div id="login-submit" class="button-block"><a href="#">submit</a></div>
-				<div id="login-cancel" class="button-block"><a href="#">cancel</a></div>
+				<div id="login-cancel" class="button-block close-reveal-modal"><a href="#">cancel</a></div>
 			</form>
+		</div>
+		<div id="popModal" style="display:none;">
+			<div id="sms_mobile_none">
+				号码不能为空！
+			</div>
+			<div id="sms_mobile_style">
+				号码格式不正确！
+			</div>
+			<div id="sms_mobile_repeat">
+				该号码已发送验证码，请60秒后再试！
+			</div>
 		</div>
 </body>
 <script type="text/javascript" src="js/jquery.js"></script>

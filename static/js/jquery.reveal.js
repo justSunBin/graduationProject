@@ -76,7 +76,7 @@
 					} 
 					if(options.animation == "none") {
 						modal.css({'visibility' : 'visible', 'top':$(document).scrollTop()+topMeasure});
-						modalBG.css({"display":"block"});	
+						modalBG.css({"display":"block"});
 						unlockModal()				
 					}
 				}

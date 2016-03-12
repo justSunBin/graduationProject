@@ -290,21 +290,25 @@ body,div,h1,h2,ul,li,a,p,input{
 }
 /*注册框样式*/
 .label_better{
+	width: 250px;
 	padding-top: 15px;
 	background: rgba(255, 255, 255, 0.10);
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 	border: none;
-	/*color: white;*/
+	color: white;
 	padding: 10px 15px;
 	border-radius: 25px;
 	font-size: 16px;
-	/*outline: none;*/
-	display: block;
-	margin: 15px;
+	outline: none;
+	display: inline-block;
+	margin: 20px;
+	margin-right: 70px;
 }
 #register-divsion,#login-divsion{
-	background: #eee;
-	/*display: none;*/
+	/*background: rgb(10,10,10);*/
+	background: rgba(10,10,10,0.9);
+	color: #fff;
+	/*margin:0 auto;*/
 	/*width: 100%;*/
 }
 #register-sendcode{
@@ -312,16 +316,20 @@ body,div,h1,h2,ul,li,a,p,input{
 	padding: 10px 5px;
 	font-size: 16px;
 	border-radius: 18px;
+	display: inline-block;
+	margin: 20px;
+	margin-left: 60px;
 }
 #register-sendcode:hover{
-	background: rgb(142, 166, 212);
+	background: rgb(142, 166, 212) !important;
 }
 #register-submit,#login-submit{
+	display: inline-block;
 	border-radius: 25px;
 	padding: 10px 15px;
 	font-size: 16px;
-	margin-left: 16px;
-	margin-top: 10px; 
+	margin-left: 150px;
+	margin-top: 10px;
 }
 #register-cancel,#login-cancel{
 	border-radius: 25px;
@@ -340,5 +348,6 @@ body,div,h1,h2,ul,li,a,p,input{
 	font-size: 20px;
 }
 #register-content .hr,#login-content .hr{
+	width: 90%;
 	background: #4A4A4A;
 }

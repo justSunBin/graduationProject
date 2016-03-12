@@ -7,7 +7,7 @@
 		height: 100%;
 		width: 100%;
 		background: #000;
-		background: rgba(0,0,0,.8);
+		background: rgba(255,255,255,0.6);
 		z-index: 100;
 		display: none;
 		top: 0;
@@ -16,11 +16,11 @@
 	
 	.reveal-modal {
 		visibility: hidden;
-		top: 100px; 
+		top: 50px; 
 		left: 50%;
 		margin-left: -300px;
 		width: 520px;
-		background: #eee url(modal-gloss.png) no-repeat -200px -80px;
+		background: #eee;
 		position: absolute;
 		z-index: 101;
 		padding: 30px 40px 34px;
@@ -37,7 +37,7 @@
 	.reveal-modal.large 		{ width: 600px; margin-left: -340px;}
 	.reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
 	
-	.reveal-modal .close-reveal-modal {
+	/*.reveal-modal .close-reveal-modal {
 		font-size: 22px;
 		line-height: .5;
 		position: absolute;
@@ -47,5 +47,5 @@
 		text-shadow: 0 -1px 1px rbga(0,0,0,.6);
 		font-weight: bold;
 		cursor: pointer;
-		} 
+		}*/ 
 
